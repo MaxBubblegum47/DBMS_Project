@@ -1,0 +1,204 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
+public class main {
+	public static void main(String[] args) throws IOException {
+		try {
+			BufferedReader Input = new BufferedReader(new InputStreamReader(System.in));
+
+			String operation1 = "1. Trovare gli username degli amici dell'utente con username = Marcolino";
+			String operation2 = "2. Trovare tutti i videogiochi acquistati dall'utente con username = MaxBubblegum";
+			String operation3 = "3. Calcolo spesa totale dei giochi acuistati da MaxBubblegum";
+			String operation4 = "4. Individuare tutti gli utenti che hanno acquistato almeno 1 gioco di categoria FPS";
+			String operation5 = "5. Quantità di videogiochi venduti di ciascun videogioco col relativo nome";
+			String operation6 = "6. Selezionare tutti i giochi che sono stati spediti con relativo nome utente e data di chi li ha acquistati";
+			String operation7 = "7. Posizione di ogni gioco nel magazzino ";
+			String operation8 = "8. Tutti i giochi di max in libreria ";
+			String operation9 = "9. Giochi con voto >= 4";
+			String operation10 = "10. Giochi in comune fra più utenti ";
+			String operation11 = "11. Quante volte è stato acquistato “Dark Souls”";
+			String operation12 = "12. Categorie di videogiochi e videogiochi associati";
+			String operation13 = "13. Digita 'esci' per uscire";
+
+			String sql1 = "SELECT USERNAME FROM UTENTE\r\n" + "WHERE ID_UTENTE IN (\r\n"
+					+ "		SELECT ID_UTENTE_AMICO FROM AMICI\r\n" + "		WHERE ID_UTENTE = (\r\n"
+					+ "			SELECT ID_UTENTE FROM UTENTE\r\n" + "			WHERE USERNAME = 'Marcolino'))\r\n"
+					+ "";
+
+			String sql2 = "SELECT DISTINCT V.NOME_VIDEOGIOCO\r\n"
+					+ "FROM VIDEOGIOCO AS V, COMPOSIZIONE AS COMP, ORDINE AS O, UTENTE AS U, ACQUISTO AS ACQ, PAGAMENTO AS PAG\r\n"
+					+ "WHERE U.USERNAME = 'MaxBubblegum'\r\n" + "AND ACQ.ID_UTENTE = U.ID_UTENTE\r\n"
+					+ "AND ACQ.ID_ORDINE = O.ID_ORDINE\r\n" + "AND O.ID_ORDINE = PAG.ID_ORDINE\r\n"
+					+ "AND COMP.ID_ORDINE = O.ID_ORDINE\r\n" + "AND V.ID_VIDEOGIOCO = COMP.ID_VIDEOGIOCO\r\n" + "";
+
+			String sql3 = "SELECT U.USERNAME, SUM(V.PREZZO) AS IMPORTO\r\n"
+					+ "FROM ORDINE AS O, UTENTE AS U, COMPOSIZIONE AS COMP, VIDEOGIOCO AS V, ACQUISTO AS ACQ, PAGAMENTO AS PAG\r\n"
+					+ "WHERE U.USERNAME = 'MaxBubblegum'\r\n" + "AND ACQ.ID_UTENTE = U.ID_UTENTE\r\n"
+					+ "AND ACQ.ID_ORDINE = O.ID_ORDINE\r\n" + "AND O.ID_ORDINE = PAG.ID_ORDINE\r\n"
+					+ "AND COMP.ID_ORDINE = O.ID_ORDINE\r\n" + "AND V.ID_VIDEOGIOCO = COMP.ID_VIDEOGIOCO\r\n"
+					+ "GROUP BY U.USERNAME\r\n" + "";
+
+			String sql4 = "SELECT U.USERNAME\r\n"
+					+ "FROM UTENTE AS U, ORDINE AS O, PAGAMENTO AS PAG, VIDEOGIOCO AS V, TIPO_VIDEOGIOCO AS TIPO, CATEGORIA AS CAT, COMPOSIZIONE AS COMP, ACQUISTO AS ACQ\r\n"
+					+ "WHERE U.ID_UTENTE = ACQ.ID_UTENTE\r\n" + "AND ACQ.ID_ORDINE = O.ID_ORDINE\r\n"
+					+ "AND O.ID_ORDINE = PAG.ID_ORDINE\r\n" + "AND COMP.ID_ORDINE = O.ID_ORDINE\r\n"
+					+ "AND V.ID_VIDEOGIOCO = COMP.ID_VIDEOGIOCO\r\n" + "AND V.ID_VIDEOGIOCO = TIPO.ID_VIDEOGIOCO\r\n"
+					+ "AND TIPO.ID_CATEGORIA = CAT.ID_CATEGORIA\r\n" + "AND CAT.NOME_CATEGORIA = 'FPS'\r\n"
+					+ "GROUP BY U.USERNAME\r\n" + "";
+
+			String sql5 = "SELECT V.NOME_VIDEOGIOCO AS VIDEOGIOCO, SUM(COMP.QUANTITA) AS COPIE_VENDUTE\r\n"
+					+ "FROM VIDEOGIOCO AS V, COMPOSIZIONE AS COMP, ORDINE AS ORD, PAGAMENTO AS PAG\r\n"
+					+ "WHERE V.ID_VIDEOGIOCO = COMP.ID_VIDEOGIOCO\r\n" + "AND COMP.ID_ORDINE = ORD.ID_ORDINE\r\n"
+					+ "AND PAG.ID_ORDINE = ORD.ID_ORDINE \r\n" + "GROUP BY V.ID_VIDEOGIOCO\r\n" + "";
+
+			String sql6 = "SELECT V.NOME_VIDEOGIOCO AS VIDEOGIOCO, PAG.DATA AS DATA_SPEDIZIONE, U.USERNAME AS UTENTE \r\n"
+					+ "FROM VIDEOGIOCO AS V, COMPOSIZIONE AS COMP, ORDINE AS ORD, PAGAMENTO AS PAG, SPEDIZIONE AS SHIP, UTENTE AS U, ACQUISTO AS ACQ\r\n"
+					+ "WHERE U.ID_UTENTE = ACQ.ID_UTENTE\r\n" + "AND ACQ.ID_ORDINE = ORD.ID_ORDINE\r\n"
+					+ "AND PAG.ID_ORDINE = ORD.ID_ORDINE\r\n" + "AND SHIP.ID_ORDINE = ORD.ID_ORDINE\r\n"
+					+ "AND COMP.ID_ORDINE = ORD.ID_ORDINE\r\n" + "AND V.ID_VIDEOGIOCO = COMP.ID_VIDEOGIOCO \r\n"
+					+ "GROUP BY V.ID_VIDEOGIOCO, PAG.DATA, U.USERNAME\r\n" + "";
+			String sql7 = "SELECT V.NOME_VIDEOGIOCO AS NOME_VIDEOGIOCO, V.COPIE_FISICHE AS COPIE_VIDEOGIOCO, R.N_RIPIANO AS RIPIANO, R.N_SCAFFALE AS SCAFFALE, MAG.ID_MAGAZZINO AS MAGAZZINO\r\n"
+					+ "FROM VIDEOGIOCO AS V, RIPIANO AS R, MAGAZZINO AS MAG \r\n"
+					+ "WHERE V.ID_VIDEOGIOCO = R.ID_VIDEOGIOCO\r\n" + "AND R.ID_MAGAZZINO = MAG.ID_MAGAZZINO\r\n" + "";
+			String sql8 = "SELECT U.USERNAME AS GIOCATORI, V.NOME_VIDEOGIOCO AS TITOLO_IN_LIBRERIA\r\n"
+					+ "FROM VIDEOGIOCO AS V, LIBRERIA AS LIB, UTENTE AS U\r\n" + "WHERE U.USERNAME = 'MaxBubblegum'\r\n"
+					+ "AND LIB.ID_UTENTE = U.ID_UTENTE\r\n" + "AND LIB.ID_VIDEOGIOCO = V.ID_VIDEOGIOCO\r\n" + "";
+			String sql9 = "SELECT V.NOME_VIDEOGIOCO, R.VOTO\r\n" + "FROM VIDEOGIOCO AS V, RECENSIONE AS R\r\n"
+					+ "WHERE V.ID_VIDEOGIOCO = R.ID_VIDEOGIOCO\r\n" + "AND R.VOTO >= 4\r\n" + "";
+
+			String sql10 = "SELECT DISTINCT V.NOME_VIDEOGIOCO, U1.USERNAME AS UTENTE_1, U2.USERNAME AS UTENTE_2\r\n"
+					+ "FROM VIDEOGIOCO AS V, UTENTE AS U1, UTENTE AS U2, LIBRERIA AS C1, LIBRERIA AS C2\r\n"
+					+ "WHERE U1.ID_UTENTE = C1.ID_UTENTE\r\n" + "AND U2.ID_UTENTE = C2.ID_UTENTE\r\n"
+					+ "AND V.ID_VIDEOGIOCO = C1.ID_VIDEOGIOCO\r\n" + "AND V.ID_VIDEOGIOCO = C2.ID_VIDEOGIOCO\r\n"
+					+ "AND U1.ID_UTENTE != U2.ID_UTENTE\r\n"
+					+ "GROUP BY V.NOME_VIDEOGIOCO, U1.USERNAME, U2.USERNAME\r\n" + "";
+			String sql11 = "SELECT COUNT (V.NOME_VIDEOGIOCO)\r\n"
+					+ "FROM VIDEOGIOCO AS V, ORDINE AS ORD, COMPOSIZIONE AS COMP, PAGAMENTO AS PAG\r\n"
+					+ "WHERE V.NOME_VIDEOGIOCO = 'Dark Souls'\r\n" + "AND V.ID_VIDEOGIOCO = COMP.ID_VIDEOGIOCO\r\n"
+					+ "AND COMP.ID_ORDINE = ORD.ID_ORDINE\r\n" + "AND ORD.ID_ORDINE = PAG.ID_ORDINE";
+
+			String sql12 = "SELECT CAT.NOME_CATEGORIA, VID.NOME_VIDEOGIOCO\r\n"
+					+ "FROM CATEGORIA AS CAT, TIPO_VIDEOGIOCO AS TIP, VIDEOGIOCO AS VID\r\n"
+					+ "WHERE VID.ID_VIDEOGIOCO = TIP.ID_VIDEOGIOCO\r\n" + "AND TIP.ID_CATEGORIA = CAT.ID_CATEGORIA\r\n";
+
+			String scelta = "0";
+
+			boolean menu = true;
+			while (menu) {
+				System.out.println("Scegliere Query: " + "\n" + operation1 + "\n" + operation2 + "\n" + operation3
+						+ "\n" + operation4 + "\n" + operation5 + "\n" + operation6 + "\n" + operation7 + "\n"
+						+ operation8 + "\n" + operation9 + "\n" + operation10 + "\n" + operation11 + "\n" + operation12
+						+ "\n" + operation13);
+				scelta = Input.readLine();
+
+				switch (scelta) {
+
+				case "1":
+					talkingterminal(sql1);
+					break;
+				case "2":
+					talkingterminal(sql2);
+					break;
+
+				case "3":
+					talkingterminal(sql3);
+					break;
+
+				case "4":
+					talkingterminal(sql4);
+					break;
+
+				case "5":
+					talkingterminal(sql5);
+					break;
+
+				case "6":
+					talkingterminal(sql6);
+					break;
+
+				case "7":
+					talkingterminal(sql7);
+					break;
+
+				case "8":
+					talkingterminal(sql8);
+					break;
+
+				case "9":
+					talkingterminal(sql9);
+					break;
+
+				case "10":
+					talkingterminal(sql10);
+					break;
+
+				case "11":
+					talkingterminal(sql11);
+					break;
+
+				case "12":
+					talkingterminal(sql12);
+					break;
+
+				case "esci":
+					String sql13 = "esci";
+					talkingterminal(sql13);
+					menu = false;
+					break;
+				default:
+					System.out.println("Scelta della query non disponibile");
+				}
+
+			}
+
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void talkingterminal(String sql) throws SQLException, ClassNotFoundException {
+		Class.forName("org.postgresql.Driver"); // Load the Driver
+		Connection conn = DriverManager
+				.getConnection("jdbc:postgresql://localhost:5432/Digital Delivery & Shipping N.32", "postgres", "1999");
+
+		if (sql == "esci") {
+			conn.close();
+		}
+
+		PreparedStatement stmt = conn.prepareStatement(sql);
+		ResultSet rs = stmt.executeQuery();
+		ResultSetMetaData rsmd = rs.getMetaData();
+		int columnsNumber = rsmd.getColumnCount();
+
+		String header = "0";
+		String datacontent = "";
+		int cont = 0;
+
+		for (int i = 1; i <= columnsNumber; i++) {
+			header = header + "\t\t" + rsmd.getColumnName(i);
+		}
+		System.out.println(header);
+		System.out.println("________________________________________________");
+
+		while (rs.next()) {
+			cont++;
+			for (int i = 1; i <= columnsNumber; i++) {
+				datacontent = datacontent + "\t\t" + rs.getString(i);
+			}
+
+			System.out.print(cont + datacontent + "\n");
+			datacontent = "";
+		}
+		System.out.println("________________________________________________");
+
+	}
+}

@@ -1,0 +1,199 @@
+/*TABLE UTENTE*/
+INSERT INTO UTENTE VALUES ('00001','Marcolino','5BFA6C3DF26D72C5','Via Garibaldi 10',NULL,'marcogamer@libero.it',3894963872);
+INSERT INTO UTENTE VALUES ('26951','King_Dark010','E92FCB66EC3F59ED','Via Verdi 67','Piazza Renato 08','France_921@gmail.it',3334963872);
+INSERT INTO UTENTE VALUES ('29043','ProGamer97','3FD7EA24A393A66D','Via San Giuseppe 15',NULL,'prog-0123@libero.it',3523945172);
+INSERT INTO UTENTE VALUES ('64307','Msmr_dan','872FBF7FFED232C9','Via Rossi 23',NULL,'DanieleVerdi@gmail.it',3614963872);
+INSERT INTO UTENTE VALUES ('83442','Stefanoss00','BA2EB42B5759FB89','Via Garibaldi 78',NULL,'steffo-villa@libero.it',3904909322);
+INSERT INTO UTENTE VALUES ('02305','Smischeck','CD9FB86B3967169F','Piazza Donatori 33',NULL,'Guglielmo_GIos@yahoo.it',3324963872);
+INSERT INTO UTENTE VALUES ('10439','Longo_013','C9B99115BF8F2EFC','Via Garibaldi 67','Viale Coppola 20','MarcoLonghini@gmail.it',3429043872);
+INSERT INTO UTENTE VALUES ('18426','Drake_1982','4EAF17A903E4ADA8','Via Rossi 89',NULL,'GibboBom12@hotmail.it',3224003872);
+INSERT INTO UTENTE VALUES ('59280','SMF-El_Ghecko','AEF3CE7C7C9CD5D9','Via Secondino 05',NULL,'MatteGiamma99@hotmail.it',3324963873);
+INSERT INTO UTENTE VALUES ('30520','Cavaxey','49D42E2EDB99F347','Via Atlante 66',NULL,'Tom00Baby@libero.it',3324934872);
+INSERT INTO UTENTE VALUES ('34003','MaxBubblegum','24FBF2877A88BF77','Via Bonaparte 42',NULL,'Fluss-lol33@hotmail.it',3924094540);
+
+/*TABLE AMICI*/
+INSERT INTO AMICI VALUES ('00001','26951');
+INSERT INTO AMICI VALUES ('00001','64307');
+INSERT INTO AMICI VALUES ('00001','02305');
+INSERT INTO AMICI VALUES ('10439','18426');
+INSERT INTO AMICI VALUES ('34003','30520');
+INSERT INTO AMICI VALUES ('83442','18426');
+INSERT INTO AMICI VALUES ('59280','30520');
+INSERT INTO AMICI VALUES ('64307','30520');
+INSERT INTO AMICI VALUES ('29043','00001');
+INSERT INTO AMICI VALUES ('26951','00001');
+INSERT INTO AMICI VALUES ('64307','00001');
+INSERT INTO AMICI VALUES ('02305','00001');
+INSERT INTO AMICI VALUES ('18426','10439');
+INSERT INTO AMICI VALUES ('30520','34003');
+INSERT INTO AMICI VALUES ('18426','83442');
+INSERT INTO AMICI VALUES ('30520','59280');
+INSERT INTO AMICI VALUES ('30520','64307');
+INSERT INTO AMICI VALUES ('00001','29043');
+
+/*TABLE ORDINE*/
+INSERT INTO ORDINE VALUES ('00123');
+INSERT INTO ORDINE VALUES ('00455');
+INSERT INTO ORDINE VALUES ('00489');
+INSERT INTO ORDINE VALUES ('00129');
+INSERT INTO ORDINE VALUES ('00086');
+INSERT INTO ORDINE VALUES ('00732');
+INSERT INTO ORDINE VALUES ('00653');
+INSERT INTO ORDINE VALUES ('00453');
+INSERT INTO ORDINE VALUES ('00321');
+INSERT INTO ORDINE VALUES ('00230');
+INSERT INTO ORDINE VALUES ('00128');
+INSERT INTO ORDINE VALUES ('00085');
+INSERT INTO ORDINE VALUES ('00731');
+INSERT INTO ORDINE VALUES ('00324');
+
+/*TABLE ACQUISTO*/
+INSERT INTO ACQUISTO VALUES ('00123','10439');
+INSERT INTO ACQUISTO VALUES ('00455','64307');
+INSERT INTO ACQUISTO VALUES ('00489','02305');
+INSERT INTO ACQUISTO VALUES ('00129','83442');
+INSERT INTO ACQUISTO VALUES ('00086','34003');
+INSERT INTO ACQUISTO VALUES ('00732','30520');
+INSERT INTO ACQUISTO VALUES ('00653','00001');
+INSERT INTO ACQUISTO VALUES ('00453','18426');
+INSERT INTO ACQUISTO VALUES ('00321','26951');
+INSERT INTO ACQUISTO VALUES ('00230','02305');
+INSERT INTO ACQUISTO VALUES ('00128','34003');
+INSERT INTO ACQUISTO VALUES ('00085','64307');
+INSERT INTO ACQUISTO VALUES ('00731','83442');
+INSERT INTO ACQUISTO VALUES ('00324','29043');
+
+/*TABLE PAGAMENTO*/
+INSERT INTO PAGAMENTO VALUES ('55664','00085',50,'29-01-2019',4119162872354178,'01-12-2027', 228, NULL, NULL, 'CARTA DI CREDITO');
+INSERT INTO PAGAMENTO VALUES ('98653','00732',100,'29-09-2019',NULL, NULL, NULL,'Fluss-lol33@hotmail.it','PROVA1', 'PAYPAL');		
+INSERT INTO PAGAMENTO VALUES ('39287','00123',100,'29-04-2019',5181688183753047,'01-06-2022', 449, NULL, NULL, 'CARTA DI CREDITO');
+INSERT INTO PAGAMENTO VALUES ('23847','00455',50,'29-09-2019',4119162872354178,'01-12-2027', 228, NULL, NULL, 'CARTA DI CREDITO');
+INSERT INTO PAGAMENTO VALUES ('12093','00489',60,'12-06-2019',5124681429043117,'01-05-2029',736, NULL, NULL, 'CARTA DI CREDITO');
+INSERT INTO PAGAMENTO VALUES ('02393','00129',70,'22-08-2019',5510638330917989,'01-12-2026',153, NULL, NULL, 'CARTA DI CREDITO');
+INSERT INTO PAGAMENTO VALUES ('30924','00086',90,'01-04-2019',NULL, NULL, NULL,'Fluss-lol33@hotmail.it', 'PROVA2','PAYPAL');
+INSERT INTO PAGAMENTO VALUES ('32087','00653',60,'18-09-2019',NULL, NULL, NULL,'MarcoPaypal@gmail.com', 'PAYPAL');
+INSERT INTO PAGAMENTO VALUES ('94382','00453',72,'15-03-2018',NULL, NULL, NULL,'GibboBom12@hotmail.it', 'PAYPAL');
+INSERT INTO PAGAMENTO VALUES ('02397','00321',80,'18-07-2018',NULL, NULL, NULL,'Luigi&Mario@gmail.com', 'PAYPAL');
+INSERT INTO PAGAMENTO VALUES ('48753','00230',50,'20-04-2020',NULL, NULL, NULL,'Guglielmo_GIos@yahoo.it', 'PAYPAL');
+
+/*TABLE SPEDIZIONE*/
+INSERT INTO SPEDIZIONE VALUES ('83569', '00123');
+INSERT INTO SPEDIZIONE VALUES ('95642', '00455');
+INSERT INTO SPEDIZIONE VALUES ('92654', '00489');
+INSERT INTO SPEDIZIONE VALUES ('58363', '00129');
+INSERT INTO SPEDIZIONE VALUES ('04253', '00086');
+INSERT INTO SPEDIZIONE VALUES ('92374', '00085');
+INSERT INTO SPEDIZIONE VALUES ('82342', '00324');
+INSERT INTO SPEDIZIONE VALUES ('34953', '00321');
+
+/*TABLE CATEGORIA*/
+INSERT INTO CATEGORIA VALUES ('00923','Action RPG','Un action RPG è un videogioco di ruolo a turni che richiede azioni veloci o riflessi pronti da parte del giocatore.');
+INSERT INTO CATEGORIA VALUES ('00364','Arcade','Un videogioco arcade è un videogioco che si gioca in una postazione pubblica apposita a gettoni o a monete, costituita fisicamente da una macchina posizionata dentro un cabinato.');
+INSERT INTO CATEGORIA VALUES ('00430','Avventura','Il videogioco di avventura è un genere di videogioco caratterizzato da esplorazione, risoluzione di enigmi, interazione con personaggi di gioco ed è incentrato sulla narrazione piuttosto che sulle sfide basate sulla prontezza di riflessi.');
+INSERT INTO CATEGORIA VALUES ('00023','Battle Royale','Battle royale è una tipologia o modalità dei videogiochi che ha come obiettivo la sopravvivenza in arena player versus player.');
+INSERT INTO CATEGORIA VALUES ('00437','Hack and Slash','Hack and slash è un genere di giochi di ruolo da tavolo e di videogiochi basati principalmente sul combattimento con armi a distanza o corpo a corpo.');
+INSERT INTO CATEGORIA VALUES ('00579','Videogioco Erotico','Il videogioco erotico è un genere di videogioco caratterizzato dalla presenza di contenuti erotici come immagini osé accompagnate da suoni erotici; tale genere non mostra scene esplicite di sesso o di organi riproduttivi in piena vista, ma è basato su allusioni sessuali.');
+INSERT INTO CATEGORIA VALUES ('00279','Gioco di Ruolo','Videogioco di ruolo, spesso abbreviato semplicemente in gioco di ruolo, è un tipo di videogioco che tradizionalmente usa elementi di gioco presi da giochi di ruolo "carta e penna". I videogiochi di ruolo moderni racchiudono una grande varietà di stili di gioco e di motori di gestione.');
+INSERT INTO CATEGORIA VALUES ('00192','MMORPG','Un MMORPG è un gioco di ruolo per computer o console che viene svolto online contemporaneamente da più persone reali. Migliaia di giocatori possono interagire interpretando personaggi che si evolvono insieme al mondo persistente che li circonda e in cui vivono.');	
+INSERT INTO CATEGORIA VALUES ('00743','Roguelike','Roguelike è un termine che indica un particolare tipo di videogiochi di ruolo, caratterizzato da elementi comuni: mappe casuali, morte permanente.');
+INSERT INTO CATEGORIA VALUES ('00034','FPS','Lo sparatutto in prima persona è un sottogenere dei videogiochi di tipo sparatutto, che in questo caso adottano una visuale in prima persona. Normalmente, in un videogioco di questo genere, nella parte bassa del campo visivo è possibile vedere la propria arma.');
+INSERT INTO CATEGORIA VALUES ('00212','TPS','Sparatutto in terza persona è il termine adottato per indicare quei videogiochi di tipo sparatutto in 3D in cui il personaggio giocante è visibile sullo schermo.');
+
+/*TABLE VIDEOGIOCO*/
+INSERT INTO VIDEOGIOCO VALUES ('12345','Call of Duty','Serie di videogiochi sparatutto in prima persona','Call of Duty è un FPS in cui è possibile giocare offline in giocatore singolo, oppure online in multigiocatore. Disponibile su PC, smartphone e numerose console.',true,true,70,10);
+INSERT INTO VIDEOGIOCO VALUES ('23456','The Binding of Isaac','Videogioco di genere roguelike','Inizialmente il giocatore controlla un bambino di nome Isaac che fugge dalla madre perché le è stato chiesto di sacrificarlo come prova della sua fede. La trama è ispirata alla storia bibblica del sacrificio di Isacco.',false,true,30,8);
+INSERT INTO VIDEOGIOCO VALUES ('34567','Fortnite','Videogioco di genere Battle Royale','In fortnite ci si trova con altri giocatori in una mappa in cui ci sono armi nascoste da cercare per poter uccidere ed eliminare gli altri giocatori. Per vincere bisogna rimanere gli unici nella mappa, quindi eliminare tutti gli altri',true,true,10,2);
+INSERT INTO VIDEOGIOCO VALUES ('45678','World of Warcraft','World of Warcraft, spesso abbreviato in WoW, è un MMORPG','Come in tutti gli MMORPG è possibile scegliere il proprio personaggio. In questo caso ci sono due principali fazioni in guerra tra loro: alleanza e orda. Se si sceglie di fare parte della prima fazione si può scegliere di essere umani, nani e altre razze "buone"; con la seconda fazione invece su può scegliere di essere orchi, troll o altre razze "malvagie".',false,false,50,4);
+INSERT INTO VIDEOGIOCO VALUES ('56789','Dark Souls','Dark Souls è una saga di videogiochi action RPG','Dark Souls è un videogioco con visuale in terza persona, quindi è possibile vedere il proprio personaggio. Il giocatore deve esplorare varie ambientazioni in stile dark fantasy e utilizzare armi, magie e strategie per sopravvivere a trappole e nemici.',true,true,60,15);
+INSERT INTO VIDEOGIOCO VALUES ('67890','Darksiders','Saga di videogiochi Hack and Slash','La serie è ambientata su una Terra post-apocalittica, dove gli umani sono quasi estinti e gli angeli combattono contro le orde di demoni per il controllo del mondo. Tra loro ci sono i quattro cavalieri dell Apocalisse, che hanno il compito di portare equilibrio nel mondo.',false,true,42,5);
+INSERT INTO VIDEOGIOCO VALUES ('78901','XXX Elon Musk','Consigliato','Sconsigliato',true,false,100,1);
+INSERT INTO VIDEOGIOCO VALUES ('89012','Borderlands','Serie di videogiochi sparatutto in prima persona','La serie è ambientata in un futuro in cui gli umani sono riusciti a colonizzare altri pianeti. Le colonie sul pianeta Pandora sono state costruite per cercare "La Cripta", luogo mistico che si dice contenga ricchezze inimmaginabili. Il compito del giocatore è andare alla ricerca di questa Cripta.',true,false,15,0);
+INSERT INTO VIDEOGIOCO VALUES ('90123','CS:GO','Counter-Strike: Global Offensive è uno sparatutto in prima persona.','CS:GO è un FPS in cui è possibile giocare solamente online in multiplayer su varie console di gioco.',false,false,15,3);
+INSERT INTO VIDEOGIOCO VALUES ('01234','Battlefield','Serie di videogiochi sparatutto in prima persona','Battlefield è un FPS ambientato tra il XX e il XXII secolo a seconda del titolo. Come gli altri FPS è disponibile su più piattaforme di gioco.',false,true,40,1);
+INSERT INTO VIDEOGIOCO VALUES ('98765','Diablo','Videogioco di genere action RPG','Ambientato in un mondo immaginario medievale, il giocatore si trova a percorrere 16 livelli sotto la città di Tristram, alla fine dei quali ci si trova dentro lo stesso inferno, in cui si affronta Diablo',true,true,20,2);
+
+/*TABLE MAGAZZINO*/
+INSERT INTO MAGAZZINO VALUES ('054');
+INSERT INTO MAGAZZINO VALUES ('004');
+INSERT INTO MAGAZZINO VALUES ('012');
+INSERT INTO MAGAZZINO VALUES ('075');
+INSERT INTO MAGAZZINO VALUES ('042');
+
+/*TABLE RIPIANO*/
+INSERT INTO RIPIANO VALUES ('78901','014','023','054');
+INSERT INTO RIPIANO VALUES ('45678','014','023','004');
+INSERT INTO RIPIANO VALUES ('98765','032','017','012');
+INSERT INTO RIPIANO VALUES ('12345','078','009','075');
+INSERT INTO RIPIANO VALUES ('01234','021','011','042');
+INSERT INTO RIPIANO VALUES ('56789','004','002','042');
+INSERT INTO RIPIANO VALUES ('90123','008','024','054');
+INSERT INTO RIPIANO VALUES ('67890','011','025','054');
+INSERT INTO RIPIANO VALUES ('34567','012','015','004');
+INSERT INTO RIPIANO VALUES ('23456','016','003','004');
+
+/*TABLE COMPOSIZIONE*/
+INSERT INTO COMPOSIZIONE VALUES ('00123','78901',1);
+INSERT INTO COMPOSIZIONE VALUES ('00455','45678',1);
+INSERT INTO COMPOSIZIONE VALUES ('00489','98765',1);
+INSERT INTO COMPOSIZIONE VALUES ('00129','12345',1);
+INSERT INTO COMPOSIZIONE VALUES ('00086','23456',1);
+INSERT INTO COMPOSIZIONE VALUES ('00086','56789',1);
+INSERT INTO COMPOSIZIONE VALUES ('00732','12345',1);
+INSERT INTO COMPOSIZIONE VALUES ('00732','01234',1);
+INSERT INTO COMPOSIZIONE VALUES ('00653','56789',1);
+INSERT INTO COMPOSIZIONE VALUES ('00453','12345',1);
+INSERT INTO COMPOSIZIONE VALUES ('00453','89012',1);
+INSERT INTO COMPOSIZIONE VALUES ('00321','56789',1);
+INSERT INTO COMPOSIZIONE VALUES ('00321','90123',1);
+INSERT INTO COMPOSIZIONE VALUES ('00230','45678',1);
+INSERT INTO COMPOSIZIONE VALUES ('00128','90123',1);
+INSERT INTO COMPOSIZIONE VALUES ('00128','01234',1);
+INSERT INTO COMPOSIZIONE VALUES ('00128','98765',1);
+INSERT INTO COMPOSIZIONE VALUES ('00085','12345',1);
+INSERT INTO COMPOSIZIONE VALUES ('00085','34567',1);
+INSERT INTO COMPOSIZIONE VALUES ('00731','67890',1);
+INSERT INTO COMPOSIZIONE VALUES ('00324','45678',1);
+
+/*TABLE RECENSIONE*/
+INSERT INTO RECENSIONE VALUES ('10001',5,NULL,'34003','56789');
+INSERT INTO RECENSIONE VALUES ('10002',4,NULL,'34003','90123');
+INSERT INTO RECENSIONE VALUES ('10003',5,'Bello.','30520','12345');
+INSERT INTO RECENSIONE VALUES ('10004',1,NULL,'83442','67890');
+INSERT INTO RECENSIONE VALUES ('10005',3,NULL,'10439','78901');
+INSERT INTO RECENSIONE VALUES ('10006',3,NULL,'10439','98765');
+INSERT INTO RECENSIONE VALUES ('10007',4,NULL,'30520','01234');
+INSERT INTO RECENSIONE VALUES ('10008',3,NULL,'30520','45678');
+
+/*TABLE LIBRERIA*/
+INSERT INTO LIBRERIA VALUES ('10439','78901');
+INSERT INTO LIBRERIA VALUES ('64307','45678');
+INSERT INTO LIBRERIA VALUES ('02305','98765');
+INSERT INTO LIBRERIA VALUES ('83442','12345');
+INSERT INTO LIBRERIA VALUES ('34003','23456');
+INSERT INTO LIBRERIA VALUES ('34003','56789');
+INSERT INTO LIBRERIA VALUES ('30520','12345');
+INSERT INTO LIBRERIA VALUES ('30520','01234');
+INSERT INTO LIBRERIA VALUES ('00001','56789');
+INSERT INTO LIBRERIA VALUES ('18426','12345');
+INSERT INTO LIBRERIA VALUES ('18426','89012');
+INSERT INTO LIBRERIA VALUES ('26951','56789');
+INSERT INTO LIBRERIA VALUES ('26951','90123');
+INSERT INTO LIBRERIA VALUES ('02305','45678');
+INSERT INTO LIBRERIA VALUES ('64307','12345');
+INSERT INTO LIBRERIA VALUES ('64307','34567');
+INSERT INTO LIBRERIA VALUES ('83442','67890');
+INSERT INTO LIBRERIA VALUES ('29043','45678');
+
+/*TIPO PRODOTTO*/
+INSERT INTO TIPO_VIDEOGIOCO VALUES('12345','00034');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('23456','00743');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('34567','00023');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('45678','00192');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('56789','00923');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('67890','00437');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('78901','00579');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('89012','00212');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('90123','00034');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('01234','00034');
+INSERT INTO TIPO_VIDEOGIOCO VALUES ('98765','00923');
+
